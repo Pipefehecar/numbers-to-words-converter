@@ -25,9 +25,7 @@ import { Conversion } from '../../models/conversion.model';
         logging: false,
       }),
     }),
-    SequelizeModule.forFeature([
-        Conversion,
-    ]),
+    SequelizeModule.forFeature([Conversion]),
   ],
   exports: [SequelizeModule],
 })
