@@ -9,8 +9,8 @@ export class SoapProvider {
 
   constructor(private configService: ConfigService) {
     const { soap } = this.configService.get('providers');
-    console.log("soap");
-    this.wsdlUrl = soap.wsdlUrl;
+    console.log(soap);
+    this.wsdlUrl = soap?.wsdlUrl;
     if (!this.wsdlUrl) {
       throw new Error('SOAP WSDL URL is required');
     }

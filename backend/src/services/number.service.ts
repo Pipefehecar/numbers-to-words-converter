@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { SoapProvider } from '../providers/soap/soap.provider';
-import { InjectModel } from '@nestjs/sequelize';
 import { Conversion } from '../models/conversion.model';
 import { ConversionRepository } from '../repositories/conversion.repository';
 
@@ -9,8 +8,6 @@ export class NumberService {
   constructor(
     private readonly soapProvider: SoapProvider,
     private readonly conversionRepository: ConversionRepository,
-    @InjectModel(Conversion)
-    private conversionModel: typeof Conversion,
   ) {}
 
   async convertNumberToWords(number: number): Promise<Conversion> {
