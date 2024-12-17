@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios'
 axios.defaults.validateStatus = () => true
 
 const axiosInstance: AxiosInstance = axios.create({
-	baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001',
+	baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001/api/v1',
 	headers: {
 		'Content-Type': 'application/json',
 		Accept: 'application/json'
