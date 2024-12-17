@@ -1,4 +1,4 @@
-@API_URL=http://localhost:3009/api/v1
+@API_URL=http://localhost:3001/api/v1
 
 ### number to word ep
 
@@ -6,7 +6,7 @@ POST {{API_URL}}/convert HTTP/1.1
 Content-Type: application/json
 
 {
-    "number": 123456789
+    "number": 1083044495
 }
 
 ### GET last 5 conversions

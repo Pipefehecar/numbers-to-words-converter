@@ -1,0 +1,15 @@
+FROM node:20-alpine
+
+# Configuración del entorno de desarrollo
+WORKDIR /app
+
+# Instalar dependencias solo una vez
+COPY package*.json ./
+RUN npm install
+
+
+# Expone el puerto 3001
+EXPOSE 3001
+
+# Comando para correr la aplicación en modo watch
+CMD ["npm", "run", "start:dev"]
