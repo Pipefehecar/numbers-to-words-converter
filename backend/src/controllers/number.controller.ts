@@ -1,28 +1,21 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { NumberService } from '../services/number.service';
+import { Conversion } from '../models/conversion.model';
 
-@Controller('number')
+@Controller()
 export class NumberController {
   constructor(private readonly numberService: NumberService) {}
 
   @Post('convert')
-  async convertToWords(
-    @Body('number') value: string,
-  ): Promise<{ words: string }> {
-    const number = parseInt(value, 10);
-    if (isNaN(number)) {
-      throw new Error('Invalid number format.');
-    }
-
-    const words = await this.numberService.convertNumberToWords(number);
-    return { words };
+  async convertNumber(
+    @Body('number') number: number,
+  ): Promise<{ id: number; number: number; words: string }> {
+    const result = await this.numberService.convertNumberToWords(number);
+    return { id: result.id, number: result.number, words: result.words };
   }
 
-  @Get('conversions')
-  async getConversions(): Promise<{ conversions: number }> {
-    //   const conversions = await this.numberService.getConversions();
-    //fake data
-    const conversions = 0;
-    return { conversions };
+  @Get('/conversions')
+  async getLastConversions(): Promise<Conversion[]> {
+    return await this.numberService.getLastConversions();
   }
 }

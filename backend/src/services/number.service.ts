@@ -1,15 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { SoapProvider } from '../providers/soap/soap.provider';
+import { InjectModel } from '@nestjs/sequelize';
+import { Conversion } from '../models/conversion.model';
+import { ConversionRepository } from '../repositories/conversion.repository';
 
 @Injectable()
 export class NumberService {
-  constructor(private readonly soapProvider: SoapProvider) {}
+  constructor(
+    private readonly soapProvider: SoapProvider,
+    private readonly conversionRepository: ConversionRepository,
+    @InjectModel(Conversion)
+    private conversionModel: typeof Conversion,
+  ) {}
 
-  async convertNumberToWords(number: number): Promise<string> {
-    // validates the input before sending it to the SOAP provider
-    if (number < 0) {
-      throw new Error('Only positive numbers are supported.');
-    }
-    return this.soapProvider.numberToWords(number);
+  async convertNumberToWords(number: number): Promise<Conversion> {
+    if (number < 0) throw new Error('Only positive numbers are supported.');
+
+    const words = await this.soapProvider.numberToWords(number);
+
+    // Save the conversion to the database
+    return this.conversionRepository.createConversion(number, words);
+  }
+
+  async getLastConversions(): Promise<Conversion[]> {
+    return this.conversionRepository.getLastFiveConversions();
   }
 }
