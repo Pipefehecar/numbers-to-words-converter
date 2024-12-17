@@ -50,19 +50,20 @@ monorepo/
    npm run dev
    ```
 
-4. **Correr Backend y Frontend Simultáneamente** (opcional)
-   Si estás en la raíz del monorepo, puedes ejecutar ambos servicios usando **concurrently**:
+4. **Correr Backend y Frontend Simultáneamente** 
+   Si estás en la raíz del monorepo, puedes ejecutar ambos servicios usando **docker compose**:
 
    ```bash
-   npm run dev
+   docker compose up --build
    ```
-   > Asegúrate de tener configurado el script `dev` en la raíz para ejecutar backend y frontend simultáneamente.
+   > Asegúrate de tener docker corriendo localmente, encontraras el frontend corriendo en http://localhost:3000.
 
 ---
 
 ## 🌐 **Acceso a la Aplicación**
 
-- **Backend**: `http://localhost:3001`
+- **Backend**: `http://localhost:3001/api/v1`
+- **Swagger Backend**: `http://localhost:3001/docs`
 - **Frontend**: `http://localhost:3000`
 
 ---
