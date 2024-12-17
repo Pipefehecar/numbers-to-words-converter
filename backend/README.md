@@ -95,6 +95,19 @@ backend/
    ```
 
 ---
+## 🌐 **Documentación de la API con Swagger**
+
+Este proyecto incluye documentación interactiva generada automáticamente con **Swagger**.
+
+### 📄 **Acceso a Swagger**
+- Una vez iniciado el servidor, puedes acceder a la documentación de Swagger en la siguiente URL:
+
+http://localhost:3001/api
+
+
+### 📋 **Características**
+- Swagger proporciona detalles de los endpoints, métodos disponibles, parámetros requeridos y ejemplos de respuestas.
+
 
 ## 🌐 **Endpoints Disponibles**
 
