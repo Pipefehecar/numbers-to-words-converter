@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 export const NumberConversionForm: React.FC = () => {
-	const [isLoading, setIsLoading] = useState(false)
+	// const [isLoading, setIsLoading] = useState(false)
 	const [wordsConverted, setWordsConverted] = useState<string>()
 	const [lastFiveConversions, setLastFiveConversions] =
 		useState<ConvertNumberToWordResponse[]>()
@@ -21,7 +21,7 @@ export const NumberConversionForm: React.FC = () => {
 		resolver: yupResolver(numberConvertionValidationSchema)
 	})
 	const onSubmit = async (data: ConvertionFormData) => {
-		setIsLoading(true)
+		// setIsLoading(true)
 		try {
 			const response = await convertNumberToWord(data.numberField)
 
@@ -31,7 +31,7 @@ export const NumberConversionForm: React.FC = () => {
 		} catch (error) {
 			console.error(error)
 		} finally {
-			setIsLoading(false)
+			// setIsLoading(false)
 		}
 	}
 
@@ -45,7 +45,9 @@ export const NumberConversionForm: React.FC = () => {
 			if (response) {
 				setLastFiveConversions(response)
 			}
-		} catch (error) {}
+		} catch (error) {
+			console.error(error)
+		}
 	}
 	return (
 		<div className={cn('w-1/3')}>
@@ -117,14 +119,15 @@ export const NumberConversionForm: React.FC = () => {
 					className=" flex gap-2 items-center"
 				>
 					<p className="text-indigo-500">Show last 5 conversions</p>
-					<ChevronDownIcon
-						className={cn('size-5 text-indigo-500')}
-					/>
+					<ChevronDownIcon className={cn('size-5 text-indigo-500')} />
 				</button>
 				{lastFiveConversions && lastFiveConversions.length > 0 && (
 					<div className={cn('rounded-xl', 'bg-white p-4')}>
 						{lastFiveConversions.map((conversion, index) => (
-							<div className={cn('flex justify-between', 'border-b')}>
+							<div
+								className={cn('flex justify-between', 'border-b')}
+								key={conversion.id}
+							>
 								<div className="flex-[0.1]">
 									<p>{index + 1}</p>
 								</div>
