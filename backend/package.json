@@ -26,6 +26,7 @@
     "@nestjs/mapped-types": "^2.0.6",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/sequelize": "^10.0.1",
+    "@nestjs/swagger": "^8.1.0",
     "dotenv": "^16.4.7",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
@@ -34,6 +35,7 @@
     "sequelize": "^6.37.5",
     "sequelize-typescript": "^2.1.6",
     "soap": "^0.43.0",
+    "swagger-ui-express": "^5.0.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
